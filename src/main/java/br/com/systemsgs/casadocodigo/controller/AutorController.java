@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.systemsgs.casadocodigo.model.ModelAutor;
+import br.com.systemsgs.casadocodigo.dto.ModelAutorDTO;
 import br.com.systemsgs.casadocodigo.service.AutorService;
 
 @RestController
 @RequestMapping(value = "/autor")
 public class AutorController {
-	
+
 	@Autowired
 	private AutorService autorService;
-	
+
 	@PostMapping(value = "/salvar")
-	public ResponseEntity<?> salvaAutor(@RequestBody @Valid ModelAutor modelAutor){
-		
-		autorService.salvaAutor(modelAutor);
-		
-		return ResponseEntity.ok(modelAutor.getId());
+	public ResponseEntity<?> salvaAutor(@RequestBody @Valid ModelAutorDTO modelAutorDTO) {
+
+		autorService.salvaAutor(modelAutorDTO);
+
+		return ResponseEntity.ok("Autor Salvo com Sucesso!!!");
 	}
 
 }
