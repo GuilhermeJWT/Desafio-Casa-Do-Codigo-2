@@ -9,8 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "autor")
@@ -29,7 +30,7 @@ public class ModelAutor implements Serializable {
 	@NotBlank(message = "O E-Mail deve ser Informado!!!")
 	private String email;
 
-	@Max(value = 400, message = "A Descrição deve ter no Máximo 400 Caracteres!!!")
+	@Length(max = 400, message = "A Descrição deve ter no Máximo 400 Caracteres!!!")
 	@NotBlank(message = "A Descrição deve ser Informada!")
 	private String descricao;
 
