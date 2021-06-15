@@ -75,6 +75,11 @@ public class ModelAutor implements Serializable {
 	public void setInstanteCadastro(LocalDate instanteCadastro) {
 		this.instanteCadastro = instanteCadastro;
 	}
+	
+	@Deprecated
+	public ModelAutor() {
+		
+	}
 
 	@Override
 	public int hashCode() {
