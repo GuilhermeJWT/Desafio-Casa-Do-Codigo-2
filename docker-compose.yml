@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+  postgres:
+    image: 'postgres:alpine'
+    volumes:
+    - postgres-volume:/var/lib/postgresql/data
+    ports:
+    - 5432:5432
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_DB: casadocodigo
+      POSTGRES_HOST: postgres
+
+  keycloak:
+    image: jboss/keycloak
+    ports:
+    - 18443:8443
+    - 18080:8080
+    - 19990:9990
+    depends_on:
+      - postgres
+    environment:
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      POSTGRES_PORT_5433_TCP_ADDR: 127.0.0.1
