@@ -21,7 +21,6 @@ public class AutorController {
 
 	@PostMapping(value = "/salvar")
 	public ResponseEntity<?> salvaAutor(@RequestBody @Valid ModelAutorDTO modelAutorDTO) {
-
 		autorService.salvaAutor(modelAutorDTO);
 
 		return ResponseEntity.ok("Autor Salvo com Sucesso!!!");

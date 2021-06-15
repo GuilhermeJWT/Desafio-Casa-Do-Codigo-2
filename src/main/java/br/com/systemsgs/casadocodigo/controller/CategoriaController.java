@@ -21,7 +21,6 @@ public class CategoriaController {
 	
 	@PostMapping(value = "/salvar")
 	public ResponseEntity<?> salvaCategoria(@RequestBody @Valid ModelCategoriaDTO modelCategoriaDTO){
-		
 		categoriaService.salvaCategoriaService(modelCategoriaDTO);
 		
 		return ResponseEntity.ok("Categoria Salva com Sucesso!!!");
