@@ -32,10 +32,11 @@ public class LivroService {
 		return livroRepository.findAll();
 	}
 	
-	public ModelLivroDTO pesquisaLivroPorId(Long id) {
+	@Transactional
+	public ModelLivro pesquisaLivroPorId(Long id) {
 		var modelLivro = livroRepository.findById(id).orElseThrow(() -> new RecursoNaoEncontradoException());
 		
-		return DozerConverter.converteEntidade(modelLivro, ModelLivroDTO.class);
+		return DozerConverter.converteEntidade(modelLivro, ModelLivro.class);
 	}
 
 }

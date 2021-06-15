@@ -7,5 +7,7 @@ import br.com.systemsgs.casadocodigo.model.ModelLivro;
 
 @Repository
 public interface LivroRepository extends JpaRepository<ModelLivro, Long>{
+	
+	boolean existsById(Long id);
 
 }
