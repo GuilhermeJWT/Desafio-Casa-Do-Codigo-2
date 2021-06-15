@@ -12,11 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "livro")
@@ -38,11 +42,11 @@ public class ModelLivro implements Serializable {
 	@Column(columnDefinition = "text")
 	private String sumario;
 
-	@Length(min = 20, message = "O Preço do Livro deve ser maior que $20,00")
+	@Min(value = 20, message = "O Preço do Livro deve ser maior que $20,00")
 	@NotNull(message = "O Preço deve ser Informado!!!")
 	private BigDecimal preco;
 
-	@Length(min = 100, message = "O Número de páginas deve ser no Minimo de 100 Páginas!!!")
+	@Min(value = 100, message = "O Número de páginas deve ser no Minimo de 100 Páginas!!!")
 	@NotNull(message = "O Número de Páginas deve ser Informado!!!")
 	private int numero_pagina;
 
@@ -50,17 +54,25 @@ public class ModelLivro implements Serializable {
 	private String isbn;
 
 	@Future(message = "A Data de Publicação deve ser no Futuro!!!")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataPublicacao;
 
+	@JsonIgnore
 	@NotNull(message = "O ID da Categoria deve ser Informado!!!")
 	@ManyToOne(optional = false)
 	@ForeignKey(name = "categoria_id")
 	private ModelCategoria categoria;
 
+	@JsonIgnore
 	@NotNull(message = "O ID do Autor deve ser Informado!!!")
 	@ManyToOne(optional = false)
 	@ForeignKey(name = "autor_id")
 	private ModelAutor autor;
+
+	@Deprecated
+	public ModelLivro() {
+
+	}
 
 	public Long getId() {
 		return id;

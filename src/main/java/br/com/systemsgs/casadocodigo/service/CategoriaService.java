@@ -18,7 +18,7 @@ public class CategoriaService {
 	private CategoriaRepository categoriaRepository;
 
 	@Transactional
-	public ModelCategoriaDTO salvaCategoriaService(@Valid ModelCategoriaDTO modelCategoriaDTO) {
+	public ModelCategoriaDTO salvaCategoriaService(ModelCategoriaDTO modelCategoriaDTO) {
 		var modelCategoria = DozerConverter.converteEntidade(modelCategoriaDTO, ModelCategoria.class);
 		var categoriaConvertida = DozerConverter.converteEntidade(categoriaRepository.save(modelCategoria), ModelCategoriaDTO.class);
 		

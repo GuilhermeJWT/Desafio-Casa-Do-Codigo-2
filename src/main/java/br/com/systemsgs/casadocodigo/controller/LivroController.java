@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.systemsgs.casadocodigo.dto.ModelAutorDTO;
-import br.com.systemsgs.casadocodigo.service.AutorService;
+import br.com.systemsgs.casadocodigo.dto.ModelLivroDTO;
+import br.com.systemsgs.casadocodigo.service.LivroService;
 
 @RestController
-@RequestMapping(value = "/api/autor")
-public class AutorController {
+@RequestMapping(value = "/api/livro")
+public class LivroController {
 
 	@Autowired
-	private AutorService autorService;
+	private LivroService livroService;
 
 	@PostMapping(value = "/salvar")
-	public ResponseEntity<?> salvaAutor(@RequestBody @Valid ModelAutorDTO modelAutorDTO) {
+	public ResponseEntity<?> salvaLivro(@RequestBody @Valid ModelLivroDTO modelLivroDTO) {
 
-		autorService.salvaAutor(modelAutorDTO);
+		livroService.salvaLicroService(modelLivroDTO);
 
-		return ResponseEntity.ok("Autor Salvo com Sucesso!!!");
+		return ResponseEntity.ok("Livro Cadastrado com Sucesso!!!");
 	}
 
 }

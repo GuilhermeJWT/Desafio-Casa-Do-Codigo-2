@@ -1,11 +1,15 @@
 package br.com.systemsgs.casadocodigo.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -21,7 +25,10 @@ public class ModelCategoria implements Serializable {
 
 	@NotBlank(message = "O Nome da Categoria deve ser Informado!!!")
 	private String nome;
-
+	
+	@OneToMany(mappedBy = "categoria", orphanRemoval = true, cascade = CascadeType.ALL)
+	private List<ModelLivro> livros = new ArrayList<ModelLivro>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -36,6 +43,14 @@ public class ModelCategoria implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public List<ModelLivro> getLivros() {
+		return livros;
+	}
+	
+	public void setLivros(List<ModelLivro> livros) {
+		this.livros = livros;
 	}
 
 	@Override

@@ -13,7 +13,7 @@ import br.com.systemsgs.casadocodigo.dto.ModelCategoriaDTO;
 import br.com.systemsgs.casadocodigo.service.CategoriaService;
 
 @RestController
-@RequestMapping(value = "/categoria")
+@RequestMapping(value = "/api/categoria")
 public class CategoriaController {
 	
 	@Autowired
