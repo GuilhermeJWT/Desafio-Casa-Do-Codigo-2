@@ -10,4 +10,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQL9Dialect    
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+ 
+security: 
+  jwt: 
+    expiracao: 50
+    chave-assinatura: casadocodigoassinaturatokenjwt
