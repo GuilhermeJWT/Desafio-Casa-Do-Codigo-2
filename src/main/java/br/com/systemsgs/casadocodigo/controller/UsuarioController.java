@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.systemsgs.casadocodigo.dto.ModelUsuarioDTO;
+import br.com.systemsgs.casadocodigo.dto.TokenDTO;
 import br.com.systemsgs.casadocodigo.model.ModelUsuario;
 import br.com.systemsgs.casadocodigo.service.ImplementacaoUserDetailsService;
 
@@ -34,5 +36,6 @@ public class UsuarioController {
 
 		return usuarioSalvo;
 	}
+
 
 }
