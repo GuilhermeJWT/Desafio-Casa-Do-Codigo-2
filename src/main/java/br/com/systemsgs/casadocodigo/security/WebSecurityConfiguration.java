@@ -6,9 +6,14 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.filter.OncePerRequestFilter;
 
+import br.com.systemsgs.casadocodigo.service.GenerationJwtAuthFilter;
+import br.com.systemsgs.casadocodigo.service.GenerationJwtService;
 import br.com.systemsgs.casadocodigo.service.ImplementacaoUserDetailsService;
 
 @EnableWebSecurity
@@ -17,9 +22,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private ImplementacaoUserDetailsService implUserDetailsService;
 	
+	@Autowired
+	private GenerationJwtService generationJwtService;
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public OncePerRequestFilter generationFilter() {
+		return new GenerationJwtAuthFilter(generationJwtService, implUserDetailsService);
 	}
 	
 	@Override
@@ -35,7 +48,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("/api/categoria/**").hasAnyRole("USER", "ADMIN")
 		.antMatchers("/api/livro/**").hasAnyRole("USER", "ADMIN")
 		.antMatchers("/api/usuario/**").permitAll()
-		.and().formLogin();
+		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and().addFilterBefore(generationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 
 }
