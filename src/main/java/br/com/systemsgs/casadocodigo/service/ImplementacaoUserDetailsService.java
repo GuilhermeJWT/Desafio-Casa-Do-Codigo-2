@@ -2,7 +2,6 @@ package br.com.systemsgs.casadocodigo.service;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,8 +14,11 @@ import br.com.systemsgs.casadocodigo.repository.UsuarioRepository;
 @Service
 public class ImplementacaoUserDetailsService implements UserDetailsService {
 
-	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private final UsuarioRepository usuarioRepository;
+	
+	public ImplementacaoUserDetailsService(UsuarioRepository usuarioRepository) {
+		this.usuarioRepository = usuarioRepository;
+	}
 
 	@Transactional
 	public ModelUsuario salvaUsuario(ModelUsuario modelUsuario) {

@@ -1,5 +1,7 @@
 package br.com.systemsgs.casadocodigo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,15 +15,18 @@ import br.com.systemsgs.casadocodigo.service.ImplementacaoUserDetailsService;
 @RestController
 @RequestMapping(value = "/api/usuario")
 public class UsuarioController {
+	
+	private final ImplementacaoUserDetailsService implUserDetailsService;
 
-	@Autowired
-	private ImplementacaoUserDetailsService implUserDetailsService;
+	public UsuarioController(ImplementacaoUserDetailsService implUserDetailsService) {
+		this.implUserDetailsService = implUserDetailsService;
+	}
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@PostMapping(value = "/salvar")
-	public ModelUsuario salvaUsuario(@RequestBody ModelUsuario modelUsuario) {
+	public ModelUsuario salvaUsuario(@RequestBody @Valid ModelUsuario modelUsuario) {
 		String senhaUserCriptografada = passwordEncoder.encode(modelUsuario.getSenha());
 		modelUsuario.setSenha(senhaUserCriptografada);
 		

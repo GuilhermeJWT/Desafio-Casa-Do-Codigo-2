@@ -9,11 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import br.com.systemsgs.casadocodigo.annotation.GenericUniqueColumn;
-
 @Entity
 @Table(name = "usuario")
-public class ModelUsuario implements Serializable{
+public class ModelUsuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,11 +19,10 @@ public class ModelUsuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@GenericUniqueColumn(domainClass = ModelUsuario.class, fieldName = "login", message = "Login já cadastrado, Informe Outro!!!")
-	//@NotBlank(message = "O Login deve ser Informado!!!")
+	@NotBlank(message = "O Login deve ser Informado!!!")
 	private String login;
 
-	//@NotBlank(message = "A Senha deve ser Informada!!!")
+	@NotBlank(message = "A Senha deve ser Informada!!!")
 	private String senha;
 
 	private boolean admin;
