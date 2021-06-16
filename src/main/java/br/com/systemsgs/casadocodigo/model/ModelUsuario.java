@@ -22,10 +22,10 @@ public class ModelUsuario implements Serializable{
 	private Long id;
 
 	@GenericUniqueColumn(domainClass = ModelUsuario.class, fieldName = "login", message = "Login já cadastrado, Informe Outro!!!")
-	@NotBlank(message = "O Login deve ser Informado!!!")
+	//@NotBlank(message = "O Login deve ser Informado!!!")
 	private String login;
 
-	@NotBlank(message = "A Senha deve ser Informada!!!")
+	//@NotBlank(message = "A Senha deve ser Informada!!!")
 	private String senha;
 
 	private boolean admin;
