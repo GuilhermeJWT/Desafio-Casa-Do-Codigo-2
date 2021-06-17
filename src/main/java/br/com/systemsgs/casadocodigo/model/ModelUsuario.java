@@ -26,6 +26,11 @@ public class ModelUsuario implements Serializable {
 	private String senha;
 
 	private boolean admin;
+	
+	@Deprecated
+	public ModelUsuario() {
+
+	}
 
 	public Long getId() {
 		return id;

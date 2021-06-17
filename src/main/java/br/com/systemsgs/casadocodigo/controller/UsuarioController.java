@@ -3,6 +3,7 @@ package br.com.systemsgs.casadocodigo.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,6 +37,16 @@ public class UsuarioController {
 
 		return usuarioSalvo;
 	}
-
+	
+	/*
+	@PostMapping(value = "/auth")
+	public TokenDTO autenticaUsuario(@RequestBody @Valid ModelUsuarioDTO modelUsuarioDTO) {
+		try {
+			//implUserDetailsService.autenticaUsuario(ModelUsuario.builder().login(modelUsuarioDTO.getLogin()).senha(modelUsuarioDTO.getSenha()).build());
+		}catch(UsernameNotFoundException exception) {
+			exception.printStackTrace();
+		}
+	}
+	*/
 
 }

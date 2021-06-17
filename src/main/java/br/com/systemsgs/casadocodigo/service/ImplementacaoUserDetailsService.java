@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.systemsgs.casadocodigo.exception.SenhaInvalidaException;
 import br.com.systemsgs.casadocodigo.model.ModelUsuario;
 import br.com.systemsgs.casadocodigo.repository.UsuarioRepository;
 
@@ -29,7 +30,7 @@ public class ImplementacaoUserDetailsService implements UserDetailsService {
 	public ModelUsuario salvaUsuario(ModelUsuario modelUsuario) {
 		return usuarioRepository.save(modelUsuario);
 	}
-	/*
+	
 	public UserDetails autenticaUsuario(ModelUsuario modelUsuario) {
 		UserDetails usuarioAutenticado = loadUserByUsername(modelUsuario.getLogin());
 		boolean senhaVerificada =  passwordEncoder.matches(modelUsuario.getSenha(), usuarioAutenticado.getPassword());
@@ -37,8 +38,8 @@ public class ImplementacaoUserDetailsService implements UserDetailsService {
 		if(senhaVerificada) {
 			return usuarioAutenticado;
 		}
+		throw new SenhaInvalidaException();
 	}
-	*/
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
