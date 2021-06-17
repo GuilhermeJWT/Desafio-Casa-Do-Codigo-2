@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 import br.com.systemsgs.casadocodigo.annotation.GenericUniqueColumn;
 import br.com.systemsgs.casadocodigo.model.ModelAutor;
 
-public class ModelAutorDTO {
+public class ModelAutorDTO{
 
 	@NotBlank(message = "O Nome deve ser Informado!!!")
 	private String nome;

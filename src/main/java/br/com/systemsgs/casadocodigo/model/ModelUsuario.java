@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "usuario")
-public class ModelUsuario implements Serializable {
+public class ModelUsuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 

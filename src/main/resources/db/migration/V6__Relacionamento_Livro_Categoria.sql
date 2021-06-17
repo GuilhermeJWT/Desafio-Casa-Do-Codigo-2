@@ -1,1 +1,0 @@
-alter table livro add constraint categoria_id foreign key (categoria_id) references categoria

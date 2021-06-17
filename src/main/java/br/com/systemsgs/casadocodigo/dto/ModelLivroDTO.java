@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import br.com.systemsgs.casadocodigo.annotation.GenericUniqueColumn;
 import br.com.systemsgs.casadocodigo.model.ModelLivro;
 
-public class ModelLivroDTO {
+public class ModelLivroDTO{
 
 	@GenericUniqueColumn(domainClass = ModelLivro.class, fieldName = "titulo", message = "O Titulo já está Cadastrado, Informe Outro!!!")
 	@NotBlank(message = "O Titulo deve ser Informado!!!")
