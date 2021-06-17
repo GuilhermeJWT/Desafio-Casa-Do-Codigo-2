@@ -11,7 +11,14 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
- 
+    show-sql: true
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/
+    schemas: casadocodigo
+    user: keycloak
+    password: keycloak
+          
 security: 
   jwt: 
     expiracao: 50

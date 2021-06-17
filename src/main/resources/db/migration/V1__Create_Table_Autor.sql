@@ -1,0 +1,1 @@
+create table autor (id  bigserial not null, descricao varchar(400), email varchar(255), instante_cadastro date, nome varchar(255), primary key (id))

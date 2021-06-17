@@ -1,0 +1,1 @@
+create table livro (id  bigserial not null, data_publicacao timestamp, isbn varchar(255), numero_pagina int4 not null check (numero_pagina>=100), preco numeric(19, 2) not null check (preco>=20), resumo varchar(500), sumario text, titulo varchar(255), autor_id int8 not null, categoria_id int8 not null, primary key (id))
